@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "contacts"
+version = "0.1.0"
+description = "dz_11"
+authors = ["KatePomazunova <kateryna.pomazunova@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.95.1"
+sqlalchemy = "^2.0.13"
+psycopg2-binary = "^2.9.6"
+pydantic = "^1.10.7"
+uvicorn = "^0.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
