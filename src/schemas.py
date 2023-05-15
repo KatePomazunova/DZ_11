@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from pydantic import BaseModel, Field, EmailStr
 
 
@@ -7,7 +7,7 @@ class ContactModel(BaseModel):
     last_name: str = Field(max_length=25)
     email: str
     phone: str
-    birthday: datetime
+    birthday: date
 
 
 class ContactResponse(BaseModel):
@@ -16,7 +16,7 @@ class ContactResponse(BaseModel):
     last_name: str
     email: str
     phone: str
-    birthday: datetime
+    birthday: date
 
     class Config:
         orm_mode = True

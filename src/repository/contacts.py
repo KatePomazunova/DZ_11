@@ -17,7 +17,7 @@ async def get_contact(contact_id: int, db: Session) -> Contact:
 
 
 async def create_contact(body: ContactModel, db: Session) -> Contact:
-    contact = Contact(name=body.name)
+    contact = Contact(first_name = body.first_name, last_name = body.last_name, email = body.email, phone = body.phone, birthday = body.birthday)
     db.add(contact)
     db.commit()
     db.refresh(contact)
@@ -49,8 +49,8 @@ async def query_search(query_field: str, query_value: str, db: Session):
     if query_field not in valid_fields:
         raise HTTPException(status_code=404, detail=f"Invalid query field. Valid fields: {valid_fields}")
     
-    contacts = db.query(Contact).filter(getattr(Contact, query_field).ilike(f"%{query_value}%")).all()
-    return {"contacts": contacts}
+    contacts = db.query(Contact).filter(getattr(Contact, query_field) == query_value).all()
+    return contacts
 
 
 async def birthdays(db: Session) -> List[Contact]:
